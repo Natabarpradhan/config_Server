@@ -8,12 +8,13 @@ spring:
     username: root
     password: Natabar@143
     url: jdbc:mysql://localhost:3306/ashokit_ecomm
-
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
-    
+  config:
+    import: configserver:  # Import configuration from the Config Server
+
 management:
   endpoints:
     web:
@@ -21,12 +22,15 @@ management:
         include: '*'
 
 server:
- port: 8081
+  port: 8081
 
-# Application messages goes here
-auth-service:
- messages: 
-  userReg: User Created
-  userRegErr: User Creation Failed
-  login: Login Success
-  loginErr: Invalid Credentials  
+product-service:
+  messages: 
+    productCreated: Product Created Successfully
+    productCreationFailed: Product Creation Failed
+    productUpdated: Product Updated Successfully
+    productUpdateFailed: Product Update Failed
+    productDeleted: Product Deleted Successfully
+    productDeletionFailed: Product Deletion Failed
+    productNotFound: Product Not Found
+    productFetchError: Error Fetching Product
